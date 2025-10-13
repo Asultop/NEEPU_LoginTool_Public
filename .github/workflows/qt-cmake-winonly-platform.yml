@@ -49,7 +49,7 @@ jobs:
     - name: Create binary package
       shell: cmd
       run: |
-        set "PRODUCT_NAME=NEEPU_Dormitory_LoginTool"
+        set "PRODUCT_NAME=NEEPU_LoginTool"
         mkdir dist
         copy build\%PRODUCT_NAME%.exe dist\
         copy build\ElaWidgetTools.dll dist\
