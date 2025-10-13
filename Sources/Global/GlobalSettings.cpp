@@ -25,19 +25,19 @@ void GlobalSettings::init()
     }
 
 
-    this->setCharactersPerMinute(120);
-    this->setGLoc(new QTemporaryDir());
-    this->setEnableThemeColorSyncWithSystem(false);
-    this->setEnableThemeModeSyncWithSystem(false);
-    this->setEnableLogPreview(false);
-    this->setReconnectedInterval(1000);
+    this->setCharactersPerMinute(120);                  // 每分钟字符数 （提升阅读体验）
+    this->setGLoc(new QTemporaryDir());                 // 临时目录
+    this->setEnableThemeColorSyncWithSystem(true);      // 启用主题颜色同步
+    this->setEnableThemeModeSyncWithSystem(true);       // 启用主题模式同步
+    this->setEnableLogPreview(false);                   // 禁用日志预览
+    this->setReconnectedInterval(50000);                // 5min
     this->setSupportedLang(QStringList{"zh_CN","en_US"});
     
-
     foreach(QString lang,this->getSupportedLang()){
         translators[lang] = new QTranslator(this);
         if(translators[lang]->load(QString(":/translations/AsulKit_%1.qm").arg(lang))){
             //ToDo: Need Do Something But Not Now; 
+            ;
         }
     }
     
