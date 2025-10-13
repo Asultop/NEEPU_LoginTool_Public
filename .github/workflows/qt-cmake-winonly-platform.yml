@@ -1,0 +1,63 @@
+name: Qt CMake Build (Platform Win Only) 
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v4.3.0
+      with:
+        version: '6.7.3' #6.7.* -> 6.7.3
+        host: 'windows'
+        target: 'desktop'
+        arch: 'win64_mingw'
+        aqtversion: '==3.1.19'
+        # use-official: true 
+        # email: ${{ secrets.QTEMAIL }} #Environment-Secrets !
+        # pw: ${{ secrets.QTPASSWD }} #Environment-Sercrets !
+
+    - name: Set up MinGW With New Feature
+      uses: Asultop/setup-mingw@v2.1
+      with:
+        platform: x64
+        version: 11.2.0
+
+    - name: Configure CMake
+      shell: cmd
+      run: |
+        mkdir build
+        cd build
+        cmake .. -G "MinGW Makefiles" -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ -DCMAKE_BUILD_TYPE=Release
+
+    - name: Build
+      shell: cmd
+      run: |
+        cd build
+        mingw32-make
+
+    - name: Create binary package
+      shell: cmd
+      run: |
+        set "PRODUCT_NAME=NEEPU_Dormitory_LoginTool"
+        mkdir dist
+        copy build\%PRODUCT_NAME%.exe dist\
+        copy build\ElaWidgetTools.dll dist\
+        windeployqt dist\%PRODUCT_NAME%.exe
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: windows-build
+        path: dist/
+        retention-days: 7

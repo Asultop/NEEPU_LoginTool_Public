@@ -1,0 +1,10 @@
+{
+    "programName": "东电寝室网登录",
+    "targetName": "NEEPU_LoginTool",
+    "programOrganization": "Asul",
+    "programVersion": "1.0.0",
+    "programDescription": "通过本地程序，你可以设定自动登录时间 （在每日踢出登录后）",
+    "programAuthor": "Asul",
+    "programLicense": "MIT",
+    "programRepository": "https://github.com/AsulTop/NEEPU_LoginTool"
+}

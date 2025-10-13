@@ -1,0 +1,19 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Sources/icon/favicon.ico</file>
+        <file>IDC/res.rc</file>
+        <file>IDC/uac.manifest</file>
+        <file>Sources/icon/splash_dark.png</file>
+        <file>Sources/icon/splash_light.png</file>
+        <file>Sources/icon/Home_Background.png</file>
+        <file>Sources/icon/github.png</file>
+        <file>Sources/icon/author.jpg</file>
+        <file>Sources/icon/wxpay-removebg-preview.png</file>
+        <file>Sources/icon/alipay-removebg-preview.png</file>
+        <file>translations/AsulKit_en_US.qm</file>
+        <file>translations/AsulKit_en_US.ts</file>
+        <file>translations/AsulKit_zh_CN.qm</file>
+        <file>translations/AsulKit_zh_CN.ts</file>
+        <file>PropertySetting/Program_Property.json</file>
+    </qresource>
+</RCC>
