@@ -60,4 +60,4 @@ jobs:
       with:
         name: windows-build
         path: dist/
-        retention-days: 7
+        retention-days: 14
